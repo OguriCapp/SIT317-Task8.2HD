@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <%- include('../partials/sidebar') %>
+    
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">My Profile</h1>
+      </div>
+      
+      <% if (locals.error) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      
+      <% if (locals.success) { %>
+        <div class="alert alert-success" role="alert">
+          <%= success %>
+        </div>
+      <% } %>
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card mb-4">
+            <div class="card-header">
+              Profile Information
+            </div>
+            <div class="card-body">
+              <form action="/users/profile?_method=PUT" method="POST">
+                <div class="mb-3">
+                  <label for="displayName" class="form-label">Display Name</label>
+                  <input type="text" class="form-control" id="displayName" name="displayName" value="<%= user.displayName %>" required>
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" value="<%= user.email %>" readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" value="<%= user.username %>" readonly>
+                </div>
+                <div class="mb-3">
+                  <label for="studentId" class="form-label">Student ID</label>
+                  <input type="text" class="form-control" id="studentId" name="studentId" value="<%= user.studentId %>" required>
+                </div>
+                <div class="mb-3">
+                  <label for="course" class="form-label">Course</label>
+                  <input type="text" class="form-control" id="course" name="course" value="<%= user.course %>">
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../partials/footer') %> 

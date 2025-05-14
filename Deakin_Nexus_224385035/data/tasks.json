@@ -1,0 +1,28 @@
+[
+  {
+    "id": "6a1b9276-8718-4e5b-a72a-0c82c454bcfb",
+    "title": "Complete SIT317 Assignment",
+    "description": "Finish the final report for SIT317 HD project",
+    "dueDate": "2025-05-20",
+    "priority": "HIGH",
+    "status": "IN_PROGRESS",
+    "progress": 80,
+    "course": "SIT317",
+    "createdBy": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-07T10:30:00.000Z",
+    "updatedAt": "2025-05-14T08:54:36.958Z"
+  },
+  {
+    "id": "036848ff-b3ea-4b70-a85d-be9118bce4bf",
+    "title": "SIT317-8.2HD-Task",
+    "description": "Test 8.2 HD project.",
+    "dueDate": "2025-05-14",
+    "priority": "MEDIUM",
+    "status": "TODO",
+    "progress": 0,
+    "course": "SIT317",
+    "createdBy": "d450d61e-fd9a-4f66-812b-ad808dd9103c",
+    "createdAt": "2025-05-14T09:50:45.629Z",
+    "updatedAt": "2025-05-14T09:50:45.629Z"
+  }
+]

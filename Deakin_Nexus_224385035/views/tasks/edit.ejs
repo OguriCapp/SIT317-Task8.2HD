@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <%- include('../partials/sidebar') %>
+    
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Edit Task</h1>
+      </div>
+      
+      <% if (locals.error) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      
+      <div class="card mb-4">
+        <div class="card-body">
+          <form action="/tasks/<%= task.id %>?_method=PUT" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" value="<%= task.title %>" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3"><%= task.description || '' %></textarea>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="dueDate" class="form-label">Due Date (YYYY-MM-DD)</label>
+                <input type="text" class="form-control" id="dueDate" name="dueDate" value="<%= task.dueDate ? task.dueDate.substring(0, 10) : '' %>" placeholder="e.g. 2025-05-20" required>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <label for="priority" class="form-label">Priority</label>
+                <select class="form-select" id="priority" name="priority" required>
+                  <option value="LOW" <%= task.priority === 'LOW' ? 'selected' : '' %>>Low</option>
+                  <option value="MEDIUM" <%= task.priority === 'MEDIUM' ? 'selected' : '' %>>Medium</option>
+                  <option value="HIGH" <%= task.priority === 'HIGH' ? 'selected' : '' %>>High</option>
+                  <option value="URGENT" <%= task.priority === 'URGENT' ? 'selected' : '' %>>Urgent</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status" required>
+                  <option value="TODO" <%= task.status === 'TODO' ? 'selected' : '' %>>To Do</option>
+                  <option value="IN_PROGRESS" <%= task.status === 'IN_PROGRESS' ? 'selected' : '' %>>In Progress</option>
+                  <option value="REVIEW" <%= task.status === 'REVIEW' ? 'selected' : '' %>>Review</option>
+                  <option value="COMPLETED" <%= task.status === 'COMPLETED' ? 'selected' : '' %>>Completed</option>
+                </select>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <label for="progress" class="form-label">Progress (%)</label>
+                <input type="number" class="form-control" id="progress" name="progress" min="0" max="100" value="<%= task.progress || 0 %>">
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="course" class="form-label">Course</label>
+              <select class="form-select" id="course" name="course">
+                <option value="SIT317" <%= task.course === 'SIT317' ? 'selected' : '' %>>SIT317</option>
+                <option value="SIT323" <%= task.course === 'SIT323' ? 'selected' : '' %>>SIT323</option>
+                <option value="SIT374" <%= task.course === 'SIT374' ? 'selected' : '' %>>SIT374</option>
+                <option value="SIT305" <%= task.course === 'SIT305' ? 'selected' : '' %>>SIT305</option>
+              </select>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="/tasks/<%= task.id %>" class="btn btn-secondary me-md-2">Cancel</a>
+              <button type="submit" class="btn btn-primary">Update Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../partials/footer') %> 

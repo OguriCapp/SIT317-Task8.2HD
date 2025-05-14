@@ -1,0 +1,52 @@
+[
+  {
+    "id": "5b3c7264-6905-3d2b-91f3-0e73d5438bda",
+    "courseCode": "SIT317",
+    "courseName": "Enterprise Software Development Project",
+    "date": "2025-05-01T00:00:00.000Z",
+    "status": "PRESENT",
+    "remarks": "Attended the class on time",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-01T12:15:00.000Z"
+  },
+  {
+    "id": "8a5d9153-7b27-4c1a-a0e5-2f94e8726cdb",
+    "courseCode": "SIT323",
+    "courseName": "Cloud Application Development",
+    "date": "2025-05-03T00:00:00.000Z",
+    "status": "PRESENT",
+    "remarks": "Participated in group discussion",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-03T15:30:00.000Z"
+  },
+  {
+    "id": "3f6e8042-5d19-4e3b-b7c6-4a95d7837eac",
+    "courseCode": "SIT374",
+    "courseName": "Project Management",
+    "date": "2025-05-05T00:00:00.000Z",
+    "status": "LATE",
+    "remarks": "Arrived 10 minutes late due to traffic",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-05T14:45:00.000Z"
+  },
+  {
+    "id": "2c7f9031-4b08-4d2a-95e7-3c84e6925bfd",
+    "courseCode": "SIT305",
+    "courseName": "Mobile Application Development",
+    "date": "2025-05-07T00:00:00.000Z",
+    "status": "ABSENT",
+    "remarks": "Sick leave",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-07T09:00:00.000Z"
+  },
+  {
+    "id": "b58f5247-1e46-4ee7-b5a2-9af8d28453e4",
+    "courseCode": "SIT317",
+    "courseName": "Test",
+    "date": "2025-05-12",
+    "status": "PRESENT",
+    "remarks": "",
+    "userId": "d450d61e-fd9a-4f66-812b-ad808dd9103c",
+    "createdAt": "2025-05-14T09:52:39.581Z"
+  }
+]

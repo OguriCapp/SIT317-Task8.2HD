@@ -1,0 +1,27 @@
+[
+  {
+    "id": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "username": "s224385035",
+    "email": "s224385035@deakin.edu.au",
+    "password": "Liu#751014",
+    "displayName": "TestStudentA",
+    "studentId": "224385035",
+    "course": "SIT317",
+    "role": "STUDENT",
+    "isActive": true,
+    "createdAt": "2025-05-14T07:07:35.064Z"
+  },
+  {
+    "id": "d450d61e-fd9a-4f66-812b-ad808dd9103c",
+    "username": "test",
+    "email": "test@deakin.edu.au",
+    "password": "test",
+    "displayName": "TestUser",
+    "studentId": "224442222",
+    "course": "SIT317",
+    "role": "STUDENT",
+    "isActive": true,
+    "createdAt": "2025-05-14T09:49:15.934Z",
+    "updatedAt": "2025-05-14T09:53:10.563Z"
+  }
+]

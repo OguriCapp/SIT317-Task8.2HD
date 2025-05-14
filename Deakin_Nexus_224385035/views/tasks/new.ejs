@@ -1,0 +1,86 @@
+<%- include('../partials/header') %>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <%- include('../partials/sidebar') %>
+    
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Create New Task</h1>
+      </div>
+      
+      <% if (locals.error) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+      
+      <div class="card mb-4">
+        <div class="card-body">
+          <form action="/tasks" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="dueDate" class="form-label">Due Date (YYYY-MM-DD)</label>
+                <input type="text" class="form-control" id="dueDate" name="dueDate" placeholder="e.g. 2025-05-20" required>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <label for="priority" class="form-label">Priority</label>
+                <select class="form-select" id="priority" name="priority" required>
+                  <option value="LOW">Low</option>
+                  <option value="MEDIUM" selected>Medium</option>
+                  <option value="HIGH">High</option>
+                  <option value="URGENT">Urgent</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status" required>
+                  <option value="TODO" selected>To Do</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="REVIEW">Review</option>
+                  <option value="COMPLETED">Completed</option>
+                </select>
+              </div>
+              
+              <div class="col-md-6 mb-3">
+                <label for="progress" class="form-label">Progress (%)</label>
+                <input type="number" class="form-control" id="progress" name="progress" min="0" max="100" value="0">
+              </div>
+            </div>
+            
+            <div class="mb-3">
+              <label for="course" class="form-label">Course</label>
+              <select class="form-select" id="course" name="course">
+                <option value="SIT317">SIT317</option>
+                <option value="SIT323">SIT323</option>
+                <option value="SIT374">SIT374</option>
+                <option value="SIT305">SIT305</option>
+              </select>
+            </div>
+            
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a href="/tasks" class="btn btn-secondary me-md-2">Cancel</a>
+              <button type="submit" class="btn btn-primary">Create Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('../partials/footer') %> 

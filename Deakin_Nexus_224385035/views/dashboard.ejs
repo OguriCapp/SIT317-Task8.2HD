@@ -1,0 +1,166 @@
+<%- include('partials/header') %>
+
+<div class="container-fluid mt-4">
+  <div class="row">
+    <%- include('partials/sidebar') %>
+    
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group me-2">
+            <a href="/tasks/new" class="btn btn-sm btn-outline-secondary">New Task</a>
+            <a href="/schedule/new" class="btn btn-sm btn-outline-secondary">Add Schedule</a>
+            <a href="/attendance/new" class="btn btn-sm btn-outline-secondary">Record Attendance</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Welcome section -->
+      <div class="alert alert-light border" role="alert">
+        <h4 class="alert-heading">Welcome, <%= user.displayName %>!</h4>
+        <p>This is your personal dashboard at Deakin Nexus. Here you can manage your tasks, view your schedule, and track your attendance.</p>
+      </div>
+      
+      <!-- Task overview -->
+      <h3>Tasks Overview</h3>
+      <div class="row">
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">To Do</h5>
+              <p class="card-text h2"><%= taskCounts.todo %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">In Progress</h5>
+              <p class="card-text h2"><%= taskCounts.inProgress %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">In Review</h5>
+              <p class="card-text h2"><%= taskCounts.review %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Completed</h5>
+              <p class="card-text h2"><%= taskCounts.completed %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Upcoming tasks -->
+      <h3>Upcoming Tasks</h3>
+      <div class="table-responsive">
+        <% if (tasks && tasks.length > 0) { %>
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Due Date</th>
+                <th>Priority</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% tasks.forEach(task => { %>
+                <tr>
+                  <td><%= task.title %></td>
+                  <td><%= new Date(task.dueDate).toLocaleDateString() %></td>
+                  <td><span class="text-<%= task.priority === 'HIGH' ? 'danger' : (task.priority === 'MEDIUM' ? 'warning' : 'info') %>"><%= task.priority %></span></td>
+                  <td><span class="text-<%= task.status === 'TODO' ? 'secondary' : (task.status === 'IN_PROGRESS' ? 'primary' : (task.status === 'REVIEW' ? 'info' : 'success')) %>"><%= task.status %></span></td>
+                  <td>
+                    <a href="/tasks/<%= task.id %>" class="btn btn-sm btn-light">View</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <div class="alert alert-light border" role="alert">
+            No tasks found. <a href="/tasks/new" class="alert-link">Create a new task</a>.
+          </div>
+        <% } %>
+      </div>
+      
+      <!-- Schedule and Attendance -->
+      <div class="row mt-4">
+        <!-- Schedule -->
+        <div class="col-md-6">
+          <h3>Today's Schedule</h3>
+          <% 
+            const today = new Date().toLocaleString('en-us', {weekday: 'long'});
+            const todaySchedules = schedules && schedules.filter(s => s.dayOfWeek === today);
+          %>
+          
+          <% if (todaySchedules && todaySchedules.length > 0) { %>
+            <div class="list-group">
+              <% todaySchedules.forEach(schedule => { %>
+                <div class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><%= schedule.courseCode %> - <%= schedule.courseName %></h5>
+                    <small><%= schedule.startTime %> - <%= schedule.endTime %></small>
+                  </div>
+                  <p class="mb-1">Location: <%= schedule.location || 'Not specified' %></p>
+                  <% if (schedule.notes) { %>
+                    <small>Notes: <%= schedule.notes %></small>
+                  <% } %>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <div class="alert alert-light border" role="alert">
+              No schedule for today. <a href="/schedule/new" class="alert-link">Add a schedule</a>.
+            </div>
+          <% } %>
+        </div>
+        
+        <!-- Attendance -->
+        <div class="col-md-6">
+          <h3>Recent Attendance</h3>
+          <% 
+            const recentAttendances = attendances && attendances.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 3);
+          %>
+          
+          <% if (recentAttendances && recentAttendances.length > 0) { %>
+            <div class="list-group">
+              <% recentAttendances.forEach(attendance => { %>
+                <div class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1"><%= attendance.courseCode %> - <%= attendance.courseName %></h5>
+                    <small><%= new Date(attendance.date).toLocaleDateString() %></small>
+                  </div>
+                  <p class="mb-1">Status: 
+                    <span class="text-<%= attendance.status === 'PRESENT' ? 'success' : (attendance.status === 'LATE' ? 'warning' : 'danger') %>">
+                      <%= attendance.status %>
+                    </span>
+                  </p>
+                  <% if (attendance.remarks) { %>
+                    <small>Remarks: <%= attendance.remarks %></small>
+                  <% } %>
+                </div>
+              <% }) %>
+            </div>
+          <% } else { %>
+            <div class="alert alert-light border" role="alert">
+              No attendance records. <a href="/attendance/new" class="alert-link">Record attendance</a>.
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<%- include('partials/footer') %> 

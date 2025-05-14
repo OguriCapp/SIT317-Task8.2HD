@@ -1,0 +1,40 @@
+[
+  {
+    "id": "7c2d8375-9816-4a3c-b8e4-1f93d6547abc",
+    "courseCode": "SIT317",
+    "courseName": "Information Technology Innovations and Entrepreneurship",
+    "dayOfWeek": "Monday",
+    "startTime": "11:00",
+    "endTime": "13:00",
+    "location": "Building LC5.105",
+    "notes": "Weekly project review",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-01T08:30:00.000Z",
+    "updatedAt": "2025-05-14T07:44:54.866Z"
+  },
+  {
+    "id": "9e4f6285-7a18-4b9d-a0c6-3d82e7659def",
+    "courseCode": "SIT323",
+    "courseName": "Cloud Native Application Development",
+    "dayOfWeek": "Thursday",
+    "startTime": "16:00",
+    "endTime": "18:00",
+    "location": "Building LC6.105",
+    "notes": "",
+    "userId": "4bfa3172-c01a-4044-ada3-2088f00d159f",
+    "createdAt": "2025-05-02T09:15:00.000Z",
+    "updatedAt": "2025-05-14T07:45:43.165Z"
+  },
+  {
+    "id": "bfbc94d1-a44f-4e26-bf9e-5860b9ca729a",
+    "courseCode": "SIT317",
+    "courseName": "Information TEST",
+    "dayOfWeek": "Monday",
+    "startTime": "11:00",
+    "endTime": "13:00",
+    "location": "Buiding LC5.105",
+    "notes": "For testing",
+    "userId": "d450d61e-fd9a-4f66-812b-ad808dd9103c",
+    "createdAt": "2025-05-14T09:51:50.423Z"
+  }
+]
